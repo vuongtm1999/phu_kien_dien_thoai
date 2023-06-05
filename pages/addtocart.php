@@ -4,12 +4,15 @@ include('../admincp/config/config.php');
 // them so luong
 // tru so luong
 // xoa san pham
+// xoa tat sp
+if (isset($_GET["delateall"]) && $_GET["delateall"] == 1) {
+    unset($_SESSION["cart"]);
+    header("Location: ../index.php?p=cart");
+}
 // them san pham vao gio hang
-
 if (isset($_POST['addtocart'])) {
     // session_destroy();
     
-
     $id = $_GET['id'];
     $soluong = 1;
     $sql = "SELECT * FROM san_pham WHERE id_sanpham='" . $id . "' LIMIT 1";
